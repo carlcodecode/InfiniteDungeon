@@ -1,6 +1,16 @@
-312
+12345
+15
+Thorfinn
+Rogue
+100000
+2
 1
-Carl
-Warrior
-78
 0
+Bow
+1
+0
+1
+0
+Poison Heal
+0
+1

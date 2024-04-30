@@ -193,8 +193,8 @@ public:
 				fNameTest(fname);
 			}
 			catch (invalidFName) {
-				cout << "File cannot be saved." << endl;
-				exit(0);
+				fname += ".txt";
+				cout << "\nAppended .txt to file name" << endl;
 			}
 
 			cout << "\nPlease enter an integer-value seed (this will determine all the random instances in the game): ";
