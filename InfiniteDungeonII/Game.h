@@ -97,6 +97,10 @@ public:
 	void seedTest(int _s) noexcept(false){
 		if (_s > 2147483646) { throw invalidSeed(); }
 	}
+
+	void fNameTest(string _fname) noexcept(false) {
+		if (_fname.substr(_fname.length() - 4) != ".txt") { throw invalidFName(); }
+	}
 	
 	Player* loadFile(string _fname) {
 		ifstream ifile(_fname);
@@ -184,7 +188,16 @@ public:
 		if (start == 1) {
 			cout << "\nWhat do you want to name your save file? (.txt format)" << endl;
 			cin >> fname;
-			cout << "\nPlease enter a seed (this will determine all the random instances in the game): ";
+
+			try {
+				fNameTest(fname);
+			}
+			catch (invalidFName) {
+				cout << "File cannot be saved." << endl;
+				exit(0);
+			}
+
+			cout << "\nPlease enter an integer-value seed (this will determine all the random instances in the game): ";
 			cin >> seed;
 
 			try {
@@ -224,8 +237,9 @@ public:
 
 				if (mmInput == 1) {
 					myP->setHP(myP->getMaxHP());
-					dl->runInstance();
 					saveFile(myP);
+					dl->runInstance();
+					
 				}
 				else if (mmInput == 2) {
 					int price = 100 * level;
@@ -349,6 +363,9 @@ public:
 
 	//Exception Handling
 	class FileIOError {
+	};
+
+	class invalidFName{
 	};
 
 	class invalidSeed {

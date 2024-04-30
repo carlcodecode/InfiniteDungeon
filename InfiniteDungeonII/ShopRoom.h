@@ -118,13 +118,13 @@ public:
                     cout << "\nPlease select an item to buy.\n(press 0 to exit)" << endl;
                     cin >> input2;
                     if (input2 != 0) {
-                        if (p->getGold() < shopItems->getList().at(input2)->getPrice()) {
+                        if (p->getGold() < shopItems->getList().at(input2-1)->getPrice()) {
                             cout << "\nNot enough money!" << endl;
                         }
                         else {
-                            p->addItem(shopItems->getList().at(input2));
+                            p->addItem(shopItems->getList().at(input2-1));
                             shopItems->eraseItem(input2);
-                            p->setGold(p->getGold() - shopItems->getList().at(input2)->getPrice());
+                            p->setGold(p->getGold() - shopItems->getList().at(input2-1)->getPrice());
                             cout << "\nCurrent Gold: " << p->getGold() << endl;
                         }
                     }

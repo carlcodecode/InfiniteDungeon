@@ -118,9 +118,8 @@ public:
 		x = 0;
 		y = 0;
 		rooms.at(0)->runInstance();
-		while (p->getHP() > 0) {
-			menu();
-		}
+		menu();
+		
 	}
 
 	void move() {
